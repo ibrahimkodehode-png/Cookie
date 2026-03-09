@@ -1,10 +1,11 @@
 import "./App.css";
+import CookieClicker from "./components/CookieClicker";
 
 function App() {
   return (
     <main>
       <h1>React Hooks Oppgave</h1>
-      <p>React fungerer nå 🎉</p>
+      <CookieClicker />
     </main>
   );
 }
