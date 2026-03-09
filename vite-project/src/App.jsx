@@ -1,6 +1,7 @@
 import "./App.css";
 import CookieClicker from "./components/CookieClicker";
 import CatFacts from "./components/CatFacts";
+import Users from "./components/Users";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <h1>React Hooks Oppgave</h1>
       <CookieClicker />
       <CatFacts />
+      <Users />
     </main>
   );
 }
