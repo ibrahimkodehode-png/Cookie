@@ -15,11 +15,7 @@ function Users() {
   function handleAddUser() {
     if (!username.trim() || !email.trim()) return;
 
-    const newUser = {
-      username: username,
-      email: email,
-    };
-
+    const newUser = { username, email };
     setUsers([...users, newUser]);
     setUsername("");
     setEmail("");
@@ -29,26 +25,26 @@ function Users() {
     <section>
       <h2>Users</h2>
 
-      <input
-        type="text"
-        placeholder="Brukernavn"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-
-      <input
-        type="email"
-        placeholder="E-post"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-
-      <button onClick={handleAddUser}>Legg til bruker</button>
+      <div>
+        <input
+          type="text"
+          placeholder="Brukernavn"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="E-post"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <button onClick={handleAddUser}>Legg til bruker</button>
+      </div>
 
       <ul>
         {users.map((user, index) => (
           <li key={index}>
-            {user.username} - {user.email}
+            <strong>{user.username}</strong> — {user.email}
           </li>
         ))}
       </ul>
