@@ -32,19 +32,22 @@ function Users() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+
         <input
           type="email"
           placeholder="E-post"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
         <button onClick={handleAddUser}>Legg til bruker</button>
       </div>
 
       <ul>
         {users.map((user, index) => (
           <li key={index}>
-            <strong>{user.username}</strong> — {user.email}
+            <strong>{user.username}</strong>
+            <span>{user.email}</span>
           </li>
         ))}
       </ul>
