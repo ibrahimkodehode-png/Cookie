@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 const mockData = [
-  { username: "Ola Normann", email: "ola.normann@norge.no" },
-  { username: "Torleif", email: "torleif@kodehode.no" },
-  { username: "Jan Egil", email: "jan.egil@kodehode.no" },
-  { username: "Sander", email: "sander@kodehode.no" },
+  { id: 1, username: "Ola Normann", email: "ola.normann@norge.no" },
+  { id: 2, username: "Torleif", email: "torleif@kodehode.no" },
+  { id: 3, username: "Jan Egil", email: "jan.egil@kodehode.no" },
+  { id: 4, username: "Sander", email: "sander@kodehode.no" },
 ];
 
 function Users() {
@@ -13,16 +13,25 @@ function Users() {
   const [email, setEmail] = useState("");
 
   function handleAddUser() {
-    if (!username.trim() || !email.trim()) return;
+    const trimmedUsername = username.trim();
+    const trimmedEmail = email.trim();
 
-    const newUser = { username, email };
-    setUsers([...users, newUser]);
+    if (!trimmedUsername || !trimmedEmail) return;
+
+    const newUser = {
+      id: Date.now(),
+      username: trimmedUsername,
+      email: trimmedEmail,
+    };
+
+    setUsers((prevUsers) => [newUser, ...prevUsers]);
     setUsername("");
     setEmail("");
   }
 
   return (
-    <section>
+    <section className="people-story">
+      <div className="story-label">Samfunn</div>
       <h2>Users</h2>
 
       <div className="user-form">
@@ -42,8 +51,8 @@ function Users() {
       </div>
 
       <ul>
-        {users.map((user, index) => (
-          <li key={index}>
+        {users.map((user) => (
+          <li key={user.id}>
             <strong>{user.username}</strong>
             <span>{user.email}</span>
           </li>

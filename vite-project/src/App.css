@@ -188,9 +188,47 @@ li {
   line-height: 1.7;
 }
 
+.sidebar-story {
+  text-align: center;
+}
+
 .sidebar-story p {
   font-size: 1.2rem;
   margin-bottom: 16px;
+}
+
+.cookie-btn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
+.cookie-btn:hover {
+  background: transparent;
+  transform: none;
+}
+
+.cookie-btn:active {
+  transform: none;
+}
+
+.cookie-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 10px auto 0;
+  transition: transform 0.15s ease;
+}
+
+.cookie-btn:hover .cookie-img {
+  transform: scale(1.05);
+}
+
+.cookie-btn:active .cookie-img {
+  transform: scale(0.95);
 }
 
 .feature-story h2 {
@@ -289,6 +327,11 @@ li {
 
   .feature-story h2 {
     font-size: 2rem;
+  }
+
+  .cookie-img {
+    width: 130px;
+    height: 130px;
   }
 
   button {
