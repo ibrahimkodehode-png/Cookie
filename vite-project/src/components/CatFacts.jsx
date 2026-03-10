@@ -5,38 +5,42 @@ function CatFacts() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function fetchCatFacts() {
-      try {
-        const response = await fetch("https://catfact.ninja/facts?limit=5");
+  async function fetchCatFacts() {
+    try {
+      setLoading(true);
+      setError("");
 
-        if (!response.ok) {
-          throw new Error("Kunne ikke hente kattfakta.");
-        }
+      const response = await fetch("https://catfact.ninja/facts?limit=10");
 
-        const data = await response.json();
-        setFacts(data.data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+      if (!response.ok) {
+        throw new Error("Kunne ikke hente kattfakta.");
       }
-    }
 
+      const data = await response.json();
+      setFacts(data.data || []);
+    } catch (err) {
+      setError(err.message || "Noe gikk galt.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
     fetchCatFacts();
   }, []);
 
   return (
-    <section>
+    <section className="feature-story cat-facts-box">
+      <div className="story-label">Dagens hovedsak</div>
       <h2>Cat Facts</h2>
 
       {loading && <p>Loading...</p>}
       {error && <p>Feil: {error}</p>}
 
       {!loading && !error && (
-        <ul>
-          {facts.map((fact, index) => (
-            <li key={index}>{fact.fact}</li>
+        <ul className="cat-facts-list">
+          {facts.map((item, index) => (
+            <li key={item.fact ?? index}>{item.fact}</li>
           ))}
         </ul>
       )}
