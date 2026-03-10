@@ -25,21 +25,19 @@ function Users() {
     <section>
       <h2>Users</h2>
 
-      <div>
+      <div className="user-form">
         <input
           type="text"
           placeholder="Brukernavn"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-
         <input
           type="email"
           placeholder="E-post"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-
         <button onClick={handleAddUser}>Legg til bruker</button>
       </div>
 

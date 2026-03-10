@@ -5,20 +5,39 @@ import Users from "./components/Users";
 
 function App() {
   return (
-    <main>
-      <h1>React Hooks Oppgave</h1>
+    <main className="newspaper">
+      <header className="paper-header">
+        <p className="paper-date">Mandag • Digital utgave</p>
+        <h1 className="paper-title">The React Times</h1>
+        <p className="paper-subtitle">
+          Interaktive nyheter om state, API-er og brukere
+        </p>
+      </header>
 
-      <div className="cookie-bg">
-        <CookieClicker />
-      </div>
+      <section className="paper-topline">
+        <span>Frontend</span>
+        <span>Hooks</span>
+        <span>State</span>
+        <span>API</span>
+        <span>Users</span>
+      </section>
 
-      <div className="cat-bg">
-        <CatFacts />
-      </div>
+      <section className="paper-grid">
+        <article className="paper-column sidebar-story">
+          <div className="story-label">Spill & Interaktivitet</div>
+          <CookieClicker />
+        </article>
 
-      <div className="user-bg">
-        <Users />
-      </div>
+        <article className="paper-column feature-story">
+          <div className="story-label">Dagens hovedsak</div>
+          <CatFacts />
+        </article>
+
+        <article className="paper-column people-story">
+          <div className="story-label">Samfunn</div>
+          <Users />
+        </article>
+      </section>
     </main>
   );
 }
